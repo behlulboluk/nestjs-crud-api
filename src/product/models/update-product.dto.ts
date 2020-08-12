@@ -6,7 +6,7 @@ export class updateProductDto{
     @prop()
     @IsNotEmpty()
     @IsOptional()
-    title: string;
+    title: string; // required for create
 
     @prop()
     @IsOptional()
@@ -15,14 +15,14 @@ export class updateProductDto{
     @prop()
     @IsUrl()
     @IsOptional()
-    link: string;
+    link: string; // ex: https://3bbb.me
 
     @prop()
     @IsOptional()
     @Matches(/^([0-9]\d{0,7})?([.][0-9]\d{1,1})?$/, {
         message: 'invalid price value by decimal(10, 2)',
     })
-    price: string;
+    price: string; // Ex: 1234, 1234.12, 1234, 12341234, 12341234.12
 
     @prop()
     @IsOptional()
@@ -30,8 +30,8 @@ export class updateProductDto{
 
     @prop()
     @IsOptional()
-    @Validate(CustomIso4217)
-    currency: string;
+    @Validate(CustomIso4217) // IsCurrency kullanınca hata aldığım için custom bir ıso4217 standartı yapmaya çalıştım
+    currency: string;        // Şuan TRY, EUR, USD değerleri soğru cevap döndürüyor.
 
     @prop()
     @IsOptional()
